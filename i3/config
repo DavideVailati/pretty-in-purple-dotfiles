@@ -1,0 +1,79 @@
+set $mod Mod4
+set $shift Shift
+
+#KEYBINDINGS FOR APPS
+bindsym $mod+Return exec alacritty
+bindsym $mod+D exec rofi -show run 
+bindsym $mod+$shift+S exec "maim -s | xclip -selection clipboard -t image/png"
+
+bindsym $mod+F2 exec printf "c"
+
+#KEYBINDINGS FOR WINDOWS
+bindsym $mod+$shift+Q kill
+floating_modifier $mod
+
+#KEYBINDINGS FOR WORKSPACES
+bindsym $mod+1 workspace "1"
+bindsym $mod+2 workspace "2"
+bindsym $mod+3 workspace "3"
+bindsym $mod+4 workspace "4"
+bindsym $mod+5 workspace "5"
+bindsym $mod+6 workspace "6"
+bindsym $mod+7 workspace "7"
+bindsym $mod+8 workspace "8"
+bindsym $mod+9 workspace "9"
+
+bindsym $mod+$shift+1 move container to workspace "1"
+bindsym $mod+$shift+2 move container to workspace "2"
+bindsym $mod+$shift+3 move container to workspace "3"
+bindsym $mod+$shift+4 move container to workspace "4"
+bindsym $mod+$shift+5 move container to workspace "5"
+bindsym $mod+$shift+6 move container to workspace "6"
+bindsym $mod+$shift+7 move container to workspace "7"
+bindsym $mod+$shift+8 move container to workspace "8"
+bindsym $mod+$shift+9 move container to workspace "9"
+
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+bindsym $mod+$shift+Right move right
+bindsym $mod+$shift+Left move left
+bindsym $mod+$shift+Up move up
+bindsym $mod+$shift+Down move down
+
+bindsym $mod+$shift+F floating toggle
+bindsym $mod+F fullscreen toggle
+
+#KEYBINDINGS FOR SESSION
+bindsym $mod+$shift+E exec i3-msg exit
+bindsym $mod+$shift+C restart
+
+
+#MONITOR MANAGEMENT
+exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-2 --off --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DP-4 --off --output DP-5 --mode 1920x1080 --pos 3840x0 --rotate normal --output HDMI-1-2 --off --output DP-1-4 --off --output DP-1-5 --off
+
+#STARTUP COMMANDS
+exec_always --no-startup-id picom --vsync --backend glx &
+exec_always killall -q polybar
+exec_always --no-startup-id sleep 1 && polybar bar1
+
+#BORDERS
+default_border pixel 5
+default_floating_border pixel 5
+gaps inner 8
+gaps outer 10
+
+set $wm_color_border_active_bg       #483a60
+set $wm_color_border_active_fg       #181b1d
+set $wm_color_border_inactive_bg     #181b1d
+set $wm_color_border_inactive_fg     #181b1d
+set $wm_color_background             #181b1d
+
+client.focused          $wm_color_border_active_bg   $wm_color_border_active_bg   $wm_color_border_active_fg   $wm_color_border_active_bg   $wm_color_border_active_bg
+client.focused_inactive $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
+client.unfocused        $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
+client.urgent           $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
+client.placeholder      $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
+client.background       $wm_color_background
