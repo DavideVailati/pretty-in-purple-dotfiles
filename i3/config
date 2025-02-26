@@ -2,7 +2,7 @@ set $mod Mod4
 set $shift Shift
 
 #KEYBINDINGS FOR APPS
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty 
 bindsym $mod+D exec rofi -show run 
 bindsym $mod+$shift+S exec "maim -s | xclip -selection clipboard -t image/png"
 
